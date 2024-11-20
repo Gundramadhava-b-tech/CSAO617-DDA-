@@ -1,0 +1,38 @@
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    comparisons = 0  # Initialize a variable to count comparisons
+
+    while low <= high:
+        mid = (low + high) // 2
+        comparisons += 1  # Increment the comparison count
+        
+        # Check if target is present at mid
+        if arr[mid] == target:
+            return mid, comparisons
+        # If target is smaller than mid, search the left half
+        elif arr[mid] > target:
+            high = mid - 1
+        # If target is greater than mid, search the right half
+        else:
+            low = mid + 1
+
+    return -1, comparisons  # Return -1 if the element is not found
+
+# Test Case 1
+arr1 = [5, 10, 15, 20, 25, 30, 35, 40, 45]
+target1 = 20
+index, comparisons1 = binary_search(arr1, target1)
+print(f"Index of {target1}: {index}, Comparisons: {comparisons1}")
+
+# Test Case 2
+arr2 = [10, 20, 30, 40, 50, 60]
+target2 = 50
+index, comparisons2 = binary_search(arr2, target2)
+print(f"Index of {target2}: {index}, Comparisons: {comparisons2}")
+
+# Test Case 3
+arr3 = [21, 32, 40, 54, 65, 76, 87]
+target3 = 32
+index, comparisons3 = binary_search(arr3, target3)
+print(f"Index of {target3}: {index}, Comparisons: {comparisons3}")
