@@ -1,0 +1,31 @@
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    comparisons = 0
+    
+    while low <= high:
+        mid = (low + high) // 2
+        comparisons += 1
+        
+        # Show midpoint calculation and comparisons
+        print(f"Low: {low}, High: {high}, Mid: {mid}, Comparisons: {comparisons}")
+        
+        if arr[mid] == target:
+            return mid, comparisons
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return -1, comparisons  # Element not found
+
+# Test the binary search function with the given array and target
+arr = [3, 9, 14, 19, 25, 31, 42, 47, 53]
+target = 31
+
+# Perform Binary Search
+index, comparisons = binary_search(arr, target)
+if index != -1:
+    print(f"Element {target} found at index {index}. Total comparisons: {comparisons}")
+else:
+    print(f"Element {target} not found. Total comparisons: {comparisons}")
